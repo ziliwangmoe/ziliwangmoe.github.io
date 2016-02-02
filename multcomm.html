@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/mystyle.css" />
+</head>
+<body>
+<h1>Study of multimedia communication</h1>
+<h2 class="subTitle">Background</h2>
+<p>This is a project in Multimedia class taught by Prof. Dan Schonfeld. The goal of project is to understand YIQ presentation of color and the multimedia communication principle in great depth.</p>
+<img src="img/multcomm/image002.jpg" />
+<p class="figDesc">Fig.1 The image before transmit</p>
+<img src="img/multcomm/image004.jpg" />
+<p class="figDesc">Fig.2 R component of image</p>
+<img src="img/multcomm/image006.jpg" />
+<p class="figDesc">Fig.3 G component of image</p>
+<img src="img/multcomm/image008.jpg" />
+<p class="figDesc">Fig.4 B component of image</p>
+<p>We can see that all the RGB components are similar; it means that each component contents same important information.</p>
+<h2 class="subTitle">Communication process</h2>
+<h2 class="subTitle">Convert RGB format into YIQ format</h3>
+<img src="img/multcomm/image009.gif" />
+<p class="figDesc">Fig.5 Y component of image</p>
+<img src="img/multcomm/image011.jpg" />
+<p class="figDesc">Fig.6 I component of image</p>
+<img src="img/multcomm/image013.jpg" />
+<p class="figDesc">Fig.7 Q component of image</p>
+<p>The YIQ format is much different from RGB, the Y component bring most of the information</p>
+<h2 class="subTitle">Convert the image into 1D signal, using interlaced raster scan</h3>
+<img src="img/multcomm/image015.jpg" />
+<p class="figDesc">Fig.8 Time domain of Y I Q signal before</p>
+<p>It shows that Y signal decrease to 3dB at frequency about 4.2 MHz</p>
+<h2 class="subTitle">Convert the 1D signal into frequency domain</h3>
+<img src="img/multcomm/image017.jpg" />
+<p class="figDesc">Fig.9 Frequency domain of Y I Q signal</p>
+<h2 class="subTitle">Filter the YIQ using different low pass filter respectively</h3>
+<p>
+Y: 0-4.2 MHz<br>
+I: 0-1.5 MHz<br>
+Q: 0-0.5 MHz</p>
+<p>It shows that I,Q components are reduced much greater than I component</p>
+<img src="img/multcomm/image023.jpg" />
+<p class="figDesc">Fig.10 The spectrum of YIQ signal after filtering, we can see beyond the pass band, the energy is very low.</p>
+<h2 class="subTitle">Generate the composite signal used in transmition</h3>
+<p>Apply QAM to I and Q signal and add Y signal to the result</p>
+<img src="img/multcomm/image031.png"/>
+<p class="figDesc">Fig.11 The spectrum of composite signal</p>
+<img src="img/multcomm/image036.jpg"/>
+<p class="figDesc">Fig.12 The composite image, we can see there are many high frequency component in the image, these high frequency component bring the information of I and Q component.</p>
+<h2 class="subTitle">Recover YIQ from the composite signal with different filters</h3>
+<img src="img/multcomm/image040.jpg" />
+<p class="figDesc">Fig.13 Y component of recovered image</p>
+<img src="img/multcomm/image046.jpg" />
+<p class="figDesc">Fig.14 I component of recovered image</p>
+<img src="img/multcomm/image048.jpg" />
+<p class="figDesc">Fig.15 Q component of recovered image</p>
+<h2 class="subTitle">Convert the recovery YIQ signal to RGB signal</h3>
+<img src="img/multcomm/image050.jpg" />
+<p class="figDesc">Fig.16 Recovered image</p>
+</body>
+</html>

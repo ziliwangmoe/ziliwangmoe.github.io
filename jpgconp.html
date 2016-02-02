@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/mystyle.css" />
+</head>
+<body>
+<h1>Study of JPEG compression algorithm</h1>
+<h2 class="subTitle">Background</h2>
+<p>This is a project in Multimedia class taught by Prof. Dan Schonfeld. The goal of project is to understand JPEG compression and 2-D discrete cosine transform in great depth.</p>
+<h2 class="subTitle">Compression process</h2>
+<p>1. The image is subdivided into many blocks with size of 8*8 pixel</p>
+<p>2. The value of every pixel was subtracted by 128</p>
+<p>3. Apply 2-D discrete cosine transform to the block.</p>
+<p>4. Quantize the block. After quantization the high frequency components are reduced.</p>
+<p>5. Generate the 1-D sequence used for serialization with the zigzag pattern.</p>
+<p>6. Process all other blocks as above</p>
+<h2 class="subTitle">Compression rate and SNR</h2>
+<p>
+Compression rate: 1-M/m<br>
+SNR=P/Pe<br>
+M: the bytes which the jpeg use to represent image<br>
+m: the bytes to store the image directly, which is 256*256 bytes<br>
+P: the power of the image P=sum(illumination of each point)^2<br>
+Pe:the power of the noise Pe=sum(difference of illumination of each point before and after compression )^2</p>
+<img src="img/jpgcomp/image001.jpg" />
+<p class="figDesc">Fig.1 Size:3266 Bytes  Compression radius: 95%  SNR:750</p>
+<img src="img/jpgcomp/image004.jpg" />
+<p class="figDesc">Fig.2 Size:8759 bytes  Compression radius: 87%  SNR:311</p>
+<img src="img/jpgcomp/image006.jpg" />
+<p class="figDesc">Fig.3 Size:10919 bytes  Compression radius: 83%  SNR:143</p>
+<img src="img/jpgcomp/image008.jpg" />
+<p class="figDesc">Fig.4 Size:14510 bytes  Compression radius: 78%  SNR:91</p>
+<h2 class="subTitle">Conclusion</h2>
+<p>The result shows that the simpler of image, the higher of the compression rate and higher SNR</p>
+</body>
+</html>

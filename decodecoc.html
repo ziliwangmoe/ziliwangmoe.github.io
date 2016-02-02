@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/mystyle.css" />
+</head>
+<body>
+<h1>Graphic resource file structure for Clan of Clashes</h1>
+<p>I published this document just in order to express the arduous work I have done.</p>
+<p>
+通用结构<br>
+1 byte 类型编号<br>
+1 Int 长度<br>
+<br>
+类型编号有<br>
+01：存储位图信息<br>
+02：存储一组图片的信息，里面包含若干04。每一组图片都有一个编号。<br>
+04：固定31个byte，存储单个图片位置等静态信息<br>
+07：固定38个byte，其中有字符串，内容和supercell有关<br>
+08：固定0x18个byte，可能为6个int值，作为矩阵什么的<br>
+09：固定7个byte<br>
+0b :<br>
+0c：长度不定，多为short值<br>
+0f：固定38个byte，其中有字符串<br>
+<br>
+头结构<br>
+0-16 byte 未知<br>
+1 short 带有名字的物件数量 count<br>
+count short 带有名字的物件编号 （和不带名字的物件编号不重复）<br>
+count byte+char[] 由字符串长度和字符串组成的物件名字的列表<br>
+<br>
+结构01（位图信息）<br>
+通用结构头<br>
+1 byte 可能为分类编号（也可能是存储bool信息的值）<br>
+1 short 图片宽<br>
+1 short 图片高<br>
+位图信息，可能为16位也可能为32位，根据像素和结构长度确定。16位时为barg，32位时为rgba。先排高度再排宽度<br>
+
+结构02（物件信息）<br>
+通用结构头<br>
+1 short 物件Id<br>
+1 short 物件中图片个数 count<br>
+count 04结构<br>
+5 byte 5个00<br>
+<br>
+结构04（图片信息）<br>
+通用结构头<br>
+1 byte 恒为00，作用未知<br>
+8 int 图片在目标中，四个点的坐标，使用的时候除以20<br>
+8 short 图片在大图中的未知，为4个点的像素坐标<br>
+<br>
+结构08（矩阵信息）<br>
+通用结构头<br>
+6 int，对应cocos里面的CCAffineTransform，平移亮除以20，旋转量除以1024。<br>
+<br>
+结构09（颜色信息）<br>
+通用结构头<br>
+7 byte，前三个位成算因子，第四个为alpha值因子，后面三个为加算因子<br>
+<br>
+结构0b（帧信息）<br>
+通用结构头<br>
+1 short 这个帧中有多少物件<br>
+1 byte 帧lable的字符串，为“”的时候为0xff<br>
+<br>
+结构0c（层级关系）<br>
+通用结构头<br>
+1 short 节点id<br>
+1 byte fps<br>
+1 short 最大帧数<br>
+1 int 帧data个数<br>
+每个序列帧有如下结构<br>
+1 short （objid）+1 short 08结构的序号 + 1 short 09结构的序号<br>
+这些结构结束后<br>
+1 short 物件数count。<br>
+count short 列举对应图片id，有的物件在02结构中，有的在0c结构中定义。<br>
+count byte 融合方式<br>
+count byte，或者为string 每个物件的lable。当为ff时，表示lable为“”，不为ff时，代表字符串长度，后面跟着lable的内容<br>
+帧数个0B结构<br>
+5 byte 5个00<br>
+</p>
+</body>
+</html>

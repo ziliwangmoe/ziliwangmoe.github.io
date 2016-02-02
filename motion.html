@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/mystyle.css" />
+</head>
+<body>
+<h1>Study of motion estimation</h1>
+<h2 class="subTitle">Background</h2>
+<p>This is a project in Multimedia class taught by Prof. Dan Schonfeld. The goal of project is to obtain an in-depth understanding of motion vector. In this project, Optic Flow Method and Displaced Frame Difference Method will be applied to calculate the moving vector though pairs of adjacent frames. These pairs are characterized by translation, rotation and arbitrary movements, respectively. And the methods based-on pixels, blocks, regions and global are all performed. Several tips in calculation will be discussed too.</p>
+
+<h2 class="subTitle">Optic Flow Method</h2>
+<p>To perform Optic Flow, we need first get some information about the data as blew:<br>
+a)	illumination of anchor frame and tracked frame <br>
+b)	gradient of anchor frame <p>
+<h3 class="subTitle">Block-based</h3>
+<p>I use 16*16 block to calculate the MV of every block. We can see the moving property of the whole picture is well described. The vector in the area of people is very large compare to the vector in the background. This indicates that a person is moving up-right in a static scene.</p>
+<img src="img/motion/image002.jpg"/>
+<p class="figDesc">Fig.1 Block-based motion vector</p>
+
+<h3 class="subTitle">Pixel-based</h3>
+<p>I use 16*16 block to calculate the MV of every pixels. Although all the details of MV are got, but we can not get much meaningful information from the pixel-based MV</p>
+<img src="img/motion/image004.jpg"/>
+<p class="figDesc">Fig.2 Pixel-based motion vector</p>
+
+<h3 class="subTitle">Ragion-based</h3>
+<p>I only calculate 5 large blocks which cover the main area of head, body, waist, thigh and leg. So we can get the MV indicating the movements of each part of body.</p>
+<img src="img/motion/image005.gif"/>
+<p class="figDesc">Fig.3 Ragion-based motion vector</p>
+
+<h3 class="subTitle">Global-based</h3>
+<p>I calculate one vector with a extremely large block with 100*100 which almost cover the whole picture. This MV gives us a total moving trend of the picture which is up-right.</p>
+<img src="img/motion/image006.gif"/>
+<p class="figDesc">Fig.4 Global-based motion vector</p>
+
+<h3 class="subTitle">Conclusion</h3>
+<p>Each way of motion representation gives us moving information in different levels; we can choose the suitable one according to our goal.</p>
+
+<h2 class="subTitle">Displaced frame difference method</h2>
+<p>The implement of DFD is more complex than optic flow. We need to find a suitable way find the best parameters to lower the DFD. In my project, I will use two kinds of search methods which are exhaust search and 2D-log search, and compare the efficiency and accuracy of them.<br>
+To simple the implementation, I only consider the translation property of the movement which two parameters can represent the movement. And use MAD error to represent DFD.</p>
+<h3 class="subTitle">Exhaust search </h3>
+<p>I find that the largest component of the MV in my case is 6, so I can only try the translation parameters in the range of -6 to 6 pixels.</p>
+
+<h3 class="subTitle">2D-log search </h3>
+<p>In the strategy, It starts from the position corresponding to zero-displacement. Each step test five search points in a diamond arrangement. In the next step, diamond search is repeated with the center moved to the best matching point resulting from the previous one. The search stepsize is reduced if the best matching point is the center point.<br>
+It is import to note that the condition of the final step is not just that the stepsize is reduced to 1 pel. In my practice, I find that, we must to continue the iteration even when the stepsize reduced to 1 until the best matching point is the center point. </p>
+
+<img src="img/motion/image008.gif"/>
+<p class="figDesc">Fig.5 Block-based motion vector</p>
+
+<img src="img/motion/image007.gif"/>
+<p class="figDesc">Fig.6 Pixel-based motion vector</p>
+
+<img src="img/motion/image009.gif"/>
+<p class="figDesc">Fig.7 Ragion-based motion vector</p>
+
+<img src="img/motion/image010.gif"/>
+<p class="figDesc">Fig.8 Global-based motion vector</p>
+
+<h2 class="subTitle">Rotation and translation</h2>
+<p>I also calculate two standard movements (rotation and translation ) to verify the algorithms. From the results, we can see that the calculated MV is perfectly as what we respect.</p>
+<img src="img/motion/image012.jpg"/>
+<p class="figDesc">Fig.9 Rotation</p>
+
+<img src="img/motion/image014.jpg"/>
+<p class="figDesc">Fig.10 Translation</p>
+
+<h2 class="subTitle">Investigate the efficiency of OF and DFD</h2>
+<p>I use the same setting to perform OF, DFD with exhaust search and DFD with 2D-log search, and got the costing time of their running, respectively.</p>
+<table>
+<tr><td>OF</td><td>0.047s</td></tr>
+<tr><td>DFD with exhaust</td><td>0.172s</td></tr>
+<tr><td>DFD with 2D-log</td><td>0.078s</td></tr>
+</table>
+<p class="figDesc">Table.1 The time consumption of three methods </p>
+<p>We can see that the speed of OF is fastest, because no iteration needed in implement of OF. But, OF have a great defeat which is cannot perform in the case that the MV are very large. So, DFD are more practical than OF.<br>
+Exhaust cost much more time than 2D-log, this is because 2D-log take much less times of summation than exhaust. In this test, the searching range of exhaust is -6 to 6, and deal with only two parameters. If we need to deal with more parameters and large movement, the superior of 2D-log will be greater.<br>
+In this test, exhaust use 20111 times of summation and 2D-log only use 3699 times. We can see why 2D-log uses so little summations from the figures below:</p>
+<img src="img/motion/image015.gif"/>
+<p class="figDesc">Fig.11 The x-axis denotes the index of pixels, and the y-axis denotes the times of summation needed to calculation the MV of the pixels. The blue and red line denote the 2D-log and exhaust search, respectively. For exhaust search, every pixel need 16*16 additional pixels to calculation, so 16*16=256 times of summation needed. We can see that even in the worst condition, the times of summation is much less than the exhaust search.</p>
+</body>
+</html>

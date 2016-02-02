@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
+</head>
+<body>
+<h1>My own idea about how can the artificial neural system work out</h1>
+<img src="../img/brain/brain_1.jpg" style="width:600px"/>
+<p>Let me take the image recognition as an example. There are many important issues in the mapping between the image and a word. Like transform invariance or inference. In my understanding, these issues cannot be addressed only by classification. Classification is just a regular module in the whole process of image-word mapping. Below I will describe each step in the process. These are my own immature ideas. I wrote the down just for discussion and recording.</p>
+
+<h2 class="subTitle">Object detection:</h2>
+<p>When a picture comes to us, first thing is to find what hotspots are there. Actually our eye cannot input a whole scene to brain. So, we need first apply specific ANN to get the distribution of level of attraction. This process need to be related to the information produced by classification ANN. Because the form with which we are familiar should have higher level. Also some other facts affect the level, like the form with strong contrast to the surrounding (brighten from in dark background) or the form highly related to dangerous.</p>
+
+<h2 class="subTitle">Segmentation:</h2>
+<p>The pixel with high and similar level will be curved out into sub-images. Then appropriate rotation and scaling can be applied to the images to align to the form in brain. This attempt may not be appropriate at first try and therefore lead to the bad classification. So, the process of classification can give some feedback to the segmentation. That is why we can read the character with rotation but with harder effort. And also some other facts may need to determine the way of segmentation. This is why we can only recognize some ambiguous objects with hints.</p>
+
+<h2 class="subTitle">Classification:</h2>
+<p>When the AI system gets the standard form of an object, specific feature extraction is applied again. These features are used to classify the object and the result is that several neurons related to this object are activated. I call it the internal abstraction.</p>
+
+<h2 class="subTitle">Retrieval:</h2>
+<p>In fact, in this phase we still don’t know what the meaning with this object is. But the activation can cause some retrievals process to happen. What we understand about this object is depended on what retrieval process goes through. And the decision is based on the competition. The most likely thing to be retrieved is the word related to the object. But for some abstractive or ambiguous object, we can retrieve different concrete brain images. Like when we see a circle, depended on the difference of experience, we may think it as a football, moon and so on. To retrieve, the system for sure need more than the abstractive activation pattern, many details are need, like the appearance of a cat. How can the system get these details, is a question need to be answered.</p>
+
+<h2 class="subTitle">Association:</h2>
+<p>No matter what the brain retrieves (brain images, sound, word and so on). The result will become the original data and go thought corresponding recognition process again and get other related things. This is the principle of inference or association.</p>
+
+<h2 class="subTitle">My comments:</h2>
+<p>Currently, a lot of work has been done about the classification. But I think the process of segmentation and retrieval is also very critical and intricate. We can achieve the system with high level of intelligence only by doing very well in all the processes.
+All the processes are based on many different ANN and there is communication among these separated systems. So, the form of the communication is another important research topic.
+</p>
+</body>
+</html>

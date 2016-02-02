@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/mystyle.css" />
+</head>
+<body>
+<h1>Can more dynamic elements be brought in game by using artificial neural network?</h1>
+<h2 class="subTitle">Research background</h2>
+<p>Do you play computer game? Do you feel boring after long time combating with monsters who always response exactly the same? It is excited to think that the monster can become more and more clever as the combat with you go on.</p>
+<p>One of important factor affects the AI of monster is the predication of the result of one combat. For example, if the monster know the possibility to win is high, the next step should be attacking the enemy, otherwise the monster should escape. If the accuracy of predication can gradually increase as the times of combat increase, the monster will became more clever gradually.</p>
+<p>The idea is that I use the ANN to implement the predication, as more and more combat result are feed into ANN, the accuracy is increased with it.</p>
+<h2 class="subTitle">Problem description</h2>
+<p>To simplify the problem, I only consider two monsters combating with each other. The monster have four attributes as describe below:<br>
+<b>Attack power</b>:The points of HP will be subtracted in each attack. <br>
+<b>Attack speed</b>:The times of attack in one second.<br>
+<b>HP</b>:Health of the monster. If the HP reached 0, the monster will die.<br>
+<b>Critical attack rate</b>:The probability of performing a special attack. In special attack, the target will suffer damage four time greater than the normal attack.</p>
+<p>I generate many monsters with random attributes, for example some monsters have very high attack power and some others have very high attack speed. A battle simulator I made are used to generate the result of combat between two monsters. Using this method, I can built up the database for my network.</p>
+<h2 class="subTitle">Design of Neural Network</h2>
+<img src="img/ann/image001.jpg" style="width:600px" />
+<p class="figDesc">Fig.1 The NN have 8 input layers, these 8 layers are SOM layer represent 4*2 attributes</p>
+<h3 class="subTitle">Why choose LAMSTAR</h3>
+<p>
+1, It can be trained online. So the accuracy of predication can be enhanced gradually <br>
+2, It can withstand the missing of some inputs. Sometimes, it is possible to know all the values of attributes.<br>
+3, It has forgetting capability, so when the game is changed, we need not redesign the algorithm. <br>
+<p>
+<h3 class="subTitle">Configuration of network</h3>
+<p>Inputs: The inputs of my network are the sets of attribute.<br>
+Middle layers: Because there are four attributes, so I need 8 SOM layers. The number of neural in each SOM layer is depended on the feeding data. So, after feed all the data, each of SOM layer will have different number of neural.<br>
+Output: Only one output layer is needed. If it outputs something larger than zero, it means side A is the winner, visa verse.</p>
+<h3 class="subTitle">Update neural</h3>
+<p>After the new data feed into SOM layer, check that is there any existed neural which a tolerance. If yes, this existed neural is the winner, otherwise a new neural need to be initialized and the link weight to this new neural is the interpolation between the two neural most close to it. If the new neural is the smallest or largest among all the existed neural, this means there is only one neural next to it. So, interpolation can not be done. In this case, the link weight for this neural is equal to the only one neural next to it.
+</p>
+<h3 class="subTitle">Update link weight</h3>
+<p>
+The learning rate for each neural is depended on the frequency of this neural gotten update. This is because monster with extreme high or low value attribute is very rare. But this dose not mean the neural with extreme value contributes less to the result. On contrary the neural with extreme value often has very high link weight to the output. For example, if you have extreme high attack power, no matter of your other attributes, you have already gotten a very high possibility of winning.
+</p>
+<h2 class="subTitle">Result</h2>
+<img src="img/ann/image002.png"/>
+<p class="figDesc">Fig.2 Relation of accuracy of predication(success rate) to number of combat involved</p>
+<p>As we expect, the accuracy gradually increases as more combat are involved. Accuracy of prediction is just one factor affecting the AI, if many other factors affecting AI are also implemented by ANN, the growth of the intelligence of monster will be more obvious<p>
+
+</body>
+</html>
