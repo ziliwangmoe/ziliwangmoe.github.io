@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
+</head>
+<body>
+<h1>Offline visualization tool for SLAM based on Unity3D</h1>
+<img src="1.jpg" style="width:600px"/>
+<p class="subTitle">Background</p>
+<p>
+SLAM is always dealing with large amount of data and these data also has some physical meanings associated with them. If we can investigate these data in more intuitive and integral way, it will be very important for us to understand the insight in the algorithm. This is why I spend a lot of time on study the way of better visualizing the input and output of SLAM.</br>
+I have studied various kinds of SLAM and also their code. One demand in these kinds of activities is that I need to make my own visualization tool to adapt all different of algorithm. This is possible, because that the input and output of SLAM are similar: Key Frame, Map Point, Key Point and so on.</br>
+In addition to that, our work needs some extra work to make the displaying a little bit fancy in order to impress the custom.
+</p>
+
+<h2 class="subTitle">Description</h2>
+<p>
+I define a common data format to store all these information. The algorithm only needs to consider how to save the data in this format, without the need to bother with rendering work. And I also provide a set of API to help doing these.</br>
+The rending part is a independent program that based on Unity3D Engine. Because I was a game developer before, so I am more familiar with game engine. And the game engine provides me a lot of convenience in term of manipulating the object. So, I can implement more powerful function, like navigation, scene background.</br>
+I serialize the data by using boost. The API library is written in C++, but Unity3D use the C#. It took me some effort to work around the problem of bridging the managed and native language.
+</p>
+
+<h2 class="subTitle">Code</h2>
+<p>
+<a href="https://github.com/rabienrose/code_snipe/tree/master/unity_slam_vis">This is the C# script for Unity3D</a></br>
+<a href="https://github.com/rabienrose/code_snipe/tree/master/hightlight/serializaition%20for%20slam%20data">This is the C++ code for serialization of data</a>
+</br>
+This is the C++ code for serialization of data
+</p>
+
+<h2 class="subTitle">Result</h2>
+<img src="2.jpg" style="width:600px"/></br>
+<img src="3.jpg" style="width:600px"/>
+<h2 class="subTitle">Conclusion</h2>
+<p>
+Serialization of data is great, I can run my algorithm in batch and investigate the result using visualization tool late. But instantly display the state of algorithm is also needed. I can make the algorithm serialize the data every frame, and the visualization tool reading the same file periodically. But the problem is that it is slow, it is impossible to reach very high frequency.</br>
+The more important drawback of my offline visualization is the format for transferring the data is not flexible enough. This is due to the limitations transferring data between managed and native language. E.g. if I want to add a attribute to the map points. I need modify the serialization API, re-define the file format, and change the managed and native convertor. And the version control of serialization API and visualization tool is another big issue. But if I can do it all in C++, I only need to consider the definition of class. The boost will do the rest for me.</br>
+So, now I have stop further development of this visualization tool. And launch my new online visualization tool based on Pangolin.
+</p>
+</body>
+</html>
