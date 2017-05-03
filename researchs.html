@@ -13,67 +13,152 @@
 <h2 class="subTitle">Highlights</h2>
 <p>
 	<div style="">
-		<h3 class="subTitle"><a href="research/brain.html">My own idea about how can the artificial neural system work out</a></h3>
-		<div>Let me take the image recognition as an example. There are many important issues in the mapping between the image and a word. Like transform invariance or inference. In my understanding, these issues cannot be addressed only by classification. Classification is just a regular module in the whole process of image-word mapping. In this article I will describe each module in artificial neural system. These are my own immature ideas. I wrote down just for discussion and recording.</div>
+		<h3 class="subTitle"><a href="research/map_sys/index.html">System of Decentralized Mapping and Tracking based on Visual-Inertial sensor</a></h3>
+		<div>Many applications have to be based on the high accuracy of position, like autonomous driving, indoor robot, drone. At this moment, the best solution is to combine the image and IMU which are off the shelf device and also get relatively practical accuracy at the same time. Another idea is the separation of mapping and tracking process. So we can utilize the past information to get more accurate position. And refine the map incrementally each time a user use it. By doing so, we can build very large scale and even dynamic map. And this technique is the intrinsic need for many emerging application, so that’s why I am pretty interesting in it.</div>
 	</div>
-	<div style=""><img src="img/brain/brain_1.jpg" style="width:600px"/></div>
+	<div style=""><img src="research/map_sys/main.png" style="width:600px"/></div>
 </p>
+
+<h2 class="subTitle">Visual-Inertial Odometry</h2>
+<p class="researchItem">
+<div class="imageDiv"><img class="imageImg" src="research/msckf/icon.jpg"/></div>
+    <div class="textZone">
+    <p class="subTitle">2017/03-2017/05</p>
+    <div><a href="research/msckf/index.html">Matlab version of MSCKF</a></div>
+    <div>IMU, EKF</div>
+</div></p>
+<p class="researchItem"><div class="textZone">
+    <p class="subTitle">2017/03-2017/05</p>
+    <div><a href="research/vio_init_v/index.html">Get velocity, gravity and gyro bias based on visual-inertial system</a></div>
+</div></p>
+<p class="researchItem"><div class="textZone">
+    <p class="subTitle">2017/04-2017/05</p>
+    <div><a href="research/cali_vio/index.html">Calibration of visual-inertial system</a></div>
+    <div>Allan Variance, Kalibr</div>
+</div></p>
+
+<h2 class="subTitle">Aglorithm on IOS</h2>
+<p class="researchItem"><div class="textZone">
+    <p class="subTitle">2017/01-2017/02</p>
+    <div><a href="research/ios_recording/index.html">IOS App to record and upload IMU and visual data</a></div>
+    <div>Objective-C, PHP</div>
+</div></p>
+<p class="researchItem">
+<div class="imageDiv"><img class="imageImg" src="research/ios_cali/icon.jpg"/></div>
+    <div class="textZone">
+    <p class="subTitle">2017/02-2017/03</p>
+    <div><a href="research/ios_cali/index.html">Camera Calibration on IOS</a></div>
+    <div>Objective-C</div>
+</div></p>
+<p class="researchItem">
+<div class="imageDiv"><img class="imageImg" src="research/ios_sfm/icon.jpg"/></div>
+    <div class="textZone">
+    <p class="subTitle">2017/02-2017/03</p>
+    <div><a href="research/ios_sfm/index.html">SFM on IOS</a></div>
+</div></p>
+
+<h2 class="subTitle">SLAM</h2>
+<p class="researchItem"><div class="textZone">
+    <p class="subTitle">2017/03-2017/04</p>
+    <div><a href="research/matlab_orb/index.html">Matlab version of ORB-SLAM</a></div>
+    <div>Matlab (Mex, speed and memory optimization)</div>
+</div></p>
+
+<h2 class="subTitle">Localization</h2>
+<p class="researchItem"><div class="textZone">
+    <p class="subTitle">2017/02-2017/04</p>
+    <div><a href="research/loc_ekf/index.html">Visual Localization based on EKF</a></div>
+</div></p>
+<p class="researchItem"><div class="textZone">
+    <p class="subTitle">2017/04-2017/05</p>
+    <div><a href="research/loc_msckf/index.html">MSCKF-Localization</a></div>
+</div></p>
+
+<h2 class="subTitle">SFM</h2>
+<p class="researchItem">
+<div class="imageDiv"><img class="imageImg" src="research/sfm_voting/icon.jpg"/></div>
+    <div class="textZone">
+    <p class="subTitle">2017/01-2017/02</p>
+    <div><a href="research/sfm_voting/index.html">Filter the outlier of 3d-2d pairs based on pose voting and position averaging</a></div>
+</div></p>
+
 <h2 class="subTitle">Visualization</h2>
 <p class="researchItem">
+<div class="imageDiv"><img class="imageImg" src="research/vis_rviz/icon.jpg"/></div>
+    <div class="textZone">
+    <p class="subTitle">2017/03-2017/04</p>
+    <div><a href="research/vis_rviz/index.html">Visualization for localization building on top of RVIZ (Ros)</a></div>
+    <div>RVIZ(Ros)</div>
+</div></p>
+<p class="researchItem">
 <div class="imageDiv"><img class="imageImg" src="research/off_vis/icon.jpg"/></div>
-<div class="textZone">
+    <div class="textZone">
     <p class="subTitle">2016/04-2016/12</p>
     <div><a href="research/off_vis/index.html">Offline visualization tool for SLAM based on Unity3D</a></div>
     <div>Unity3D, Boost-serialization, C#, Managed and native language bridge</div>
-</div>
-</p>
+</div></p>
 <p class="researchItem">
-<div class="textZone">
+<div class="imageDiv"><img class="imageImg" src="research/vis_slam/icon.jpg"/></div>
+    <div class="textZone">
     <p class="subTitle">2017/03-2017/04</p>
-    <div><a href="melanoma.html">Online visualization too for SLAM</a></div>
-</div>
-</p>
+    <div><a href="research/vis_slam/index.html">Online visualization too for SLAM</a></div>
+    <div>Pangolin, OpenGL, Design pattern</div>
+</div></p>
 <p class="researchItem">
-<div class="textZone">
+<div class="imageDiv"><img class="imageImg" src="research/vis_matlab/icon.jpg"/></div>
+    <div class="textZone">
     <p class="subTitle">2016/06-2016/08</p>
-    <div><a href="melanoma.html">Interactive visualization tool based on Matlab</a></div>
-</div>
-</p>
-<h2 class="subTitle">Staff Training</h2>
-<p class="researchItem">
-<div class="textZone">
-    <p class="subTitle">2016/06-2016/08</p>
-    <div><a href="melanoma.html">SLAM training for new employee</a></div>
-</div>
-</p>
-<p class="researchItem">
+    <div><a href="research/vis_matlab/index.html">Interactive visualization tool based on Matlab</a></div>
+    <div>Matlab GUI</div>
+</div></p>
 
-<div class="textZone">
+<h2 class="subTitle">Staff Training</h2>
+<p class="researchItem"><div class="textZone">
     <p class="subTitle">2016/06-2016/08</p>
-    <div><a href="melanoma.html">Training system for company</a></div>
-</div>
-</p>
+    <div><a href="research/slam_lec/index.html">SLAM training for new employee</a></div>
+</div></p>
+<p class="researchItem"><div class="textZone">
+    <p class="subTitle">2016/06-2016/08</p>
+    <div><a href="research/train_sys/index.html">Training system for employee</a></div>
+</div></p>
+<p class="researchItem"><div class="textZone">
+    <p class="subTitle">2017/03-2017/04</p>
+    <div><a href="research/exam_sys/index.html">Exam system for employee</a></div>
+</div></p>
+
 <h2 class="subTitle">Algorithm Test</h2>
-<p class="researchItem">
-<div class="textZone">
+<p class="researchItem"><div class="textZone">
     <p class="subTitle">2016/06-2016/08</p>
-    <div><a href="melanoma.html">Algorithm test system based on robot framework</a></div>
-</div>
-</p>
+    <div><a href="research/test_slam/index.html">Automatic Test system for SLAM</a></div>
+    <div>Robot Framework, Bash, Python</div>
+</div></p>
+
 <h2 class="subTitle">Synthetical Data</h2>
-<p class="researchItem">
-<div class="textZone">
+<p class="researchItem"><div class="textZone">
     <p class="subTitle">2016/06-2016/08</p>
-    <div><a href="melanoma.html">Synthetical Data for SLAM</a></div>
-</div>
-</p>
+    <div><a href="research/syn_slam/index.html">Synthetical Data for SLAM</a></div>
+    <div>Design Pattern</div>
+</div></p>
 <p class="researchItem">
-<div class="textZone">
+<div class="imageDiv"><img class="imageImg" src="research/syn_map/icon.jpg"/></div>
+    <div class="textZone">
     <p class="subTitle">2016/06-2016/08</p>
-    <div><a href="melanoma.html">Synthetical Data for map merging</a></div>
-</div>
-</p>
+    <div><a href="research/syn_map/index.html">Synthetical Data for map merging</a></div>
+    <div>Python</div>
+</div></p>
+<p class="researchItem"><div class="textZone">
+    <p class="subTitle">2017/02-2017/03</p>
+    <div><a href="research/syn_vio/index.html">Synthetical Data for Visual-Inertial Odemetry</a></div>
+    <div>Gazebo(Ros)</div>
+</div></p>
+
 <h2 class="subTitle">Artificial Intelligence</h2>
+<p class="researchItem">
+<div class="textZone">
+    <p class="subTitle">2014-2015</p>
+    <div><a href="research/brain.html">My own idea about how can the artificial neural system work out</a></div>
+</div>
+</p>
 <p class="researchItem">
 	<div class="imageDiv"><img class="imageImg" src="img/mela/melaicon.jpg"/></div>
 	<div class="textZone">
